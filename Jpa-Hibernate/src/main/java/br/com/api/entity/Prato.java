@@ -1,4 +1,4 @@
-package br.com.entity;
+package br.com.api.entity;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
