@@ -1,6 +1,8 @@
 package br.com.api.serviceTeste;
 
+import br.com.api.dao.PratoDao;
 import br.com.api.entity.Prato;
+import br.com.api.util.JPAUtil;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -15,8 +17,10 @@ public class PratoService {
         prato.setDisponivel(true);
         prato.setValor(BigDecimal.valueOf(88.50));
 
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Teste");
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+        EntityManager entityManager = JPAUtil.getEntityManager();
+        PratoDao pratoDao = new PratoDao(entityManager);
+        pratoDao.cadastrar(prato);
         entityManager.getTransaction().begin();
         entityManager.persist(prato);
         entityManager.getTransaction().commit();
