@@ -12,8 +12,11 @@ public class Categoria {
 
     private String nome;
 
-    public  Categoria(){
+    Categoria(){
 
+    }
+    public  Categoria(String nome){
+        this.nome  = nome;
     }
 
     public Integer getId() {
