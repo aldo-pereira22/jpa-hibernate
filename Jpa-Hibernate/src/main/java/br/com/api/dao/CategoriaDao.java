@@ -20,7 +20,7 @@ public class CategoriaDao {
         return this.entityManager.find(Categoria.class, id);
     }
 
-    public List
+
     public List<Categoria> consultarTodos() {
         String jpql = "SELECT c FROM Categoria c";
         return this.entityManager.createQuery(jpql,Categoria.class).getResultList();

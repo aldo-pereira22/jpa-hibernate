@@ -1,11 +1,13 @@
 package br.com.api.serviceTeste;
 
+import br.com.api.dao.CardapioDao;
 import br.com.api.dao.CategoriaDao;
 import br.com.api.entity.Categoria;
 import br.com.api.util.CarrregaDadosUtil;
 import br.com.api.util.JPAUtil;
 
 import javax.persistence.EntityManager;
+import java.math.BigDecimal;
 
 public class CardapioService {
     public static void main(String[] args) {
@@ -29,6 +31,8 @@ public class CardapioService {
         entityManager.getTransaction().begin();
         CarrregaDadosUtil.cadastarCategorias(entityManager);
         CarrregaDadosUtil.cadastrarProdutosCardapio(entityManager);
+        CardapioDao caardapioDao = new CardapioDao(entityManager);
+        System.out.println("Lista de Produtos por valor: "+ caardapioDao.consultarPorValor(BigDecimal.valueOf(59.00)));
         entityManager.close();
     }
 }
