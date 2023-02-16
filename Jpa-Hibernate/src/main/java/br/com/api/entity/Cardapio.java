@@ -5,8 +5,8 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "pratos")
-public class Prato {
+@Table(name = "cardapio")
+public class Cardapio {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,10 +16,13 @@ public class Prato {
     private Boolean disponivel;
     private BigDecimal valor;
 
+    @ManyToOne
+    private Categoria categoria;
+
     @Column(name = "data_de_registro")
     private LocalDate dataDeRegistro = LocalDate.now();
 
-    public Prato() {
+    public Cardapio() {
     }
 
     public Integer getId() {
