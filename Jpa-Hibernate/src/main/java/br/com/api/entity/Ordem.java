@@ -3,6 +3,7 @@ package br.com.api.entity;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "ordens")
@@ -15,7 +16,15 @@ public class Ordem {
     private BigDecimal valorTotal;
 
     @Column(name = "data_de_criacao")
-    private LocalDate dataCriacao   ;
+    private LocalDate dataCriacao = LocalDate.now();
+
+    @ManyToMany
+    @JoinTable(
+            name = "ordens_cardapio",
+            joinColumns = @JoinColumn(name = "ordens_id"),
+            inverseJoinColumns = @JoinColumn(name = "cardapio_id")
+    )
+    private List<Cardapio> cardapioList;
 
     @ManyToOne
     private Cliente cliente;
@@ -23,9 +32,7 @@ public class Ordem {
     public Ordem() {
     }
 
-    public Ordem(BigDecimal valorTotal, LocalDate dataCriacao, Cliente cliente) {
-        this.valorTotal = valorTotal;
-        this.dataCriacao = dataCriacao;
+    public Ordem( Cliente cliente) {
         this.cliente = cliente;
     }
 
