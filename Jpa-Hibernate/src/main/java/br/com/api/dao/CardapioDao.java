@@ -23,9 +23,23 @@ public class CardapioDao {
         return this.entityManager.find(Cardapio.class, id);
     }
 
+    public Cardapio consultarPorNome(final  String filtro){
+        try {
+            String jpql = "SELECT c FROM Cardapio c WHERE UPPER(c.nome) = upper(:nome)";
+            return this.entityManager.createQuery(jpql, Cardapio.class).setParameter("nome",filtro).getSingleResult();
+        }catch (Exception e){
+            throw null;
+        }
+
+    }
     public List<Cardapio> consultarTodos(){
-        String sql = "SELECT c FROM Cardapio c";
-        return this.entityManager.createQuery(sql, Cardapio.class).getResultList();
+        try{
+            String sql = "SELECT c FROM Cardapio c";
+            return this.entityManager.createQuery(sql, Cardapio.class).getResultList();
+        }catch (Exception e){
+            throw null;
+        }
+
 
     }
 
@@ -33,8 +47,12 @@ public class CardapioDao {
         this.entityManager.merge(cardapio);
     }
     public List<Cardapio> consultarPorValor(final BigDecimal filtro){
-        String jpql = "SELECT c FROM Cardapio c WHERE c.valor = :valor";
-        return this.entityManager.createQuery(jpql, Cardapio.class).setParameter("valor",filtro).getResultList();
+        try{
+            String jpql = "SELECT c FROM Cardapio c WHERE c.valor = :valor";
+            return this.entityManager.createQuery(jpql, Cardapio.class).setParameter("valor",filtro).getResultList();
+        }catch (Exception e){
+            throw null;
+        }
     }
     public void exlcuir(final Cardapio cardapio){
         this.entityManager.remove(cardapio);
