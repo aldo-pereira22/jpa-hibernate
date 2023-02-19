@@ -1,8 +1,8 @@
 package br.com.api.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "clientes")
@@ -11,16 +11,23 @@ public class Cliente {
     @Id
     private String cpf;
     private String nome;
-    private String cep;
 
-    public Cliente(String cpf, String nome, String cep) {
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+    private List<Endereco> enderecoList = new ArrayList<>();
+
+
+    public Cliente(String cpf, String nome) {
         this.cpf = cpf;
         this.nome = nome;
-        this.cep = cep;
     }
 
     public Cliente() {
 
+    }
+
+    public void addEndereco(Endereco endereco){
+        endereco.setCliente(this);
+        this.enderecoList.add(endereco);
     }
 
     @Override
