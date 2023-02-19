@@ -17,11 +17,11 @@ public class Endereco {
     @ManyToOne
     private Cliente cliente;
 
-    public Endereco() {
+    public Endereco(String s, String s1, String s2, String goiania, String goias) {
 
     }
 
-    public Endereco(Integer id, String cep, String rua, String complemento, String cidade, String estado, Cliente cliente) {
+    public Endereco(String cep, String rua, String complemento, String cidade, String estado, Cliente cliente) {
         this.id = id;
         this.cep = cep;
         this.rua = rua;
@@ -29,6 +29,18 @@ public class Endereco {
         this.cidade = cidade;
         this.estado = estado;
         this.cliente = cliente;
+    }
+
+    @Override
+    public String toString() {
+        return "Endereco{" +
+                "id=" + id +
+                ", cep='" + cep + '\'' +
+                ", rua='" + rua + '\'' +
+                ", complemento='" + complemento + '\'' +
+                ", cidade='" + cidade + '\'' +
+                ", estado='" + estado + '\'' +
+                '}';
     }
 
     public Integer getId() {

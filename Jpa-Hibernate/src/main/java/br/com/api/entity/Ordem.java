@@ -76,10 +76,6 @@ public class Ordem {
         return ordensCardapioList;
     }
 
-    public void setOrdensCardapioList(List<OrdensCardapio> ordensCardapioList) {
-        this.ordensCardapioList = ordensCardapioList;
-    }
-
     @Override
     public String toString() {
         return "Ordem{" +
@@ -89,4 +85,18 @@ public class Ordem {
                 ", cliente=" + cliente +
                 '}';
     }
+
+    public void setOrdensCardapioList(List<OrdensCardapio> ordensCardapioList) {
+        this.ordensCardapioList = ordensCardapioList;
+    }
+
+    public Ordem(Integer id, BigDecimal valorTotal, LocalDate dataCriacao, List<OrdensCardapio> ordensCardapioList, Cliente cliente) {
+        this.id = id;
+        this.valorTotal = valorTotal;
+        this.dataCriacao = dataCriacao;
+        this.ordensCardapioList = ordensCardapioList;
+        this.cliente = cliente;
+    }
+
+
 }

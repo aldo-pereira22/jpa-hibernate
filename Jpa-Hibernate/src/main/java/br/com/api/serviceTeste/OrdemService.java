@@ -4,6 +4,7 @@ import br.com.api.dao.CardapioDao;
 import br.com.api.dao.ClienteDao;
 import br.com.api.dao.OrdemDao;
 import br.com.api.entity.Cliente;
+import br.com.api.entity.Endereco;
 import br.com.api.entity.Ordem;
 import br.com.api.entity.OrdensCardapio;
 import br.com.api.util.CarrregaDadosUtil;
@@ -24,12 +25,14 @@ public class OrdemService {
         OrdemDao ordemDao= new OrdemDao(entityManager);
 
 
-        Cliente Aldo = new Cliente("11111", "Aldo", "11111112222");
-        Ordem ordem = new Ordem(Aldo);
+        Endereco endereco = new Endereco("000000","Rua 32", "APTO 1001", "Goiania", "Goias");
+        Cliente aldo =  new Cliente("11111","Aldo");
+        aldo.addEndereco(endereco);
+        Ordem ordem = new Ordem(aldo);
         ordem.addOrdensCardapio(new OrdensCardapio(cardapioDao.consultarPorId(1),2));
-        clienteDao.cadastrar(Aldo);
+        clienteDao.cadastrar(aldo);
         ordemDao.cadastrar(ordem);
-        System.out.println(ordem.getOrdensCardapioList());
+        System.out.println(ordem);
         entityManager.getTransaction().commit();
         entityManager.close();
     }

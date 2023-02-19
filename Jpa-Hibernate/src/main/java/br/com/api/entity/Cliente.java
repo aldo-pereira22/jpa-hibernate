@@ -35,7 +35,7 @@ public class Cliente {
         return "Cliente{" +
                 "cpf='" + cpf + '\'' +
                 ", nome='" + nome + '\'' +
-                ", cep='" + cep + '\'' +
+                ", enderecoList=" + enderecoList +
                 '}';
     }
 
@@ -55,11 +55,4 @@ public class Cliente {
         this.nome = nome;
     }
 
-    public String getCep() {
-        return cep;
-    }
-
-    public void setCep(String cep) {
-        this.cep = cep;
-    }
 }
