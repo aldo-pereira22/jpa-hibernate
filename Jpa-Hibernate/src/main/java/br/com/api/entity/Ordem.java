@@ -14,7 +14,7 @@ public class Ordem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "valor_total")
-    private BigDecimal valorTotal;
+    private BigDecimal valorTotal = BigDecimal.ZERO;
 
     @Column(name = "data_de_criacao")
     private LocalDate dataCriacao = LocalDate.now();
@@ -35,6 +35,8 @@ public class Ordem {
     public void addOrdensCardapio(OrdensCardapio ordensCardapio){
         ordensCardapio.setOrdem(this);
         this.ordensCardapioList.add(ordensCardapio);
+        this.valorTotal  = this.valorTotal.add (ordensCardapio.getValorDeRegistro()
+                .multiply(BigDecimal.valueOf(ordensCardapio.getQuantidade())));
     }
     public Ordem( Cliente cliente) {
         this.cliente = cliente;

@@ -57,12 +57,12 @@ public class OrdensCardapio {
         this.cardapio = cardapio;
     }
 
-    public BigDecimal getValor() {
+    public BigDecimal getValorDeRegistro() {
         return valorDeRegistro;
     }
 
-    public void setValor(BigDecimal valor) {
-        this.valorDeRegistro = valor;
+    public void setValorDeRegistro(BigDecimal valorDeRegistro) {
+        this.valorDeRegistro = valorDeRegistro;
     }
 
     public Integer getQuantidade() {
