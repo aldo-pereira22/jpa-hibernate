@@ -3,6 +3,7 @@ package br.com.api.entity;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -18,20 +19,23 @@ public class Ordem {
     @Column(name = "data_de_criacao")
     private LocalDate dataCriacao = LocalDate.now();
 
-    @OneToMany
+    @OneToMany(mappedBy = "ordem", cascade = CascadeType.ALL)
 //    @JoinTable(
 //            name = "ordens_cardapio",
 //            joinColumns = @JoinColumn(name = "ordens_id"),
 //            inverseJoinColumns = @JoinColumn(name = "cardapio_id")
 //    )
-    private List<OrdensCardapio> ordensCardapioList;
+    private List<OrdensCardapio> ordensCardapioList = new ArrayList<>();
 
     @ManyToOne
     private Cliente cliente;
 
     public Ordem() {
     }
-
+    public void addOrdensCardapio(OrdensCardapio ordensCardapio){
+        ordensCardapio.setOrdem(this);
+        this.ordensCardapioList.add(ordensCardapio);
+    }
     public Ordem( Cliente cliente) {
         this.cliente = cliente;
     }
@@ -66,6 +70,14 @@ public class Ordem {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public List<OrdensCardapio> getOrdensCardapioList() {
+        return ordensCardapioList;
+    }
+
+    public void setOrdensCardapioList(List<OrdensCardapio> ordensCardapioList) {
+        this.ordensCardapioList = ordensCardapioList;
     }
 
     @Override
