@@ -17,7 +17,9 @@ public class Endereco {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Cliente cliente;
+    public Endereco(){
 
+    }
     public Endereco(String s, String s1, String s2, String goiania, String goias) {
 
     }

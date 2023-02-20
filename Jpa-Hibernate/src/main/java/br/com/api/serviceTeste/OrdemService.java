@@ -22,7 +22,10 @@ public class OrdemService {
         CarrregaDadosUtil.cadastrarClientes(entityManager);
         CarrregaDadosUtil.cadastrarOrdensClientes(entityManager);
         EnderecoDao enderecoDao = new EnderecoDao(entityManager);
-        System.out.println("Consulta Clientes: -----> "+enderecoDao.consultarClientesUsandoCriteria("SP", "Sao Paulo", null));
+        ClienteDao clienteDao = new ClienteDao(entityManager);
+
+        System.out.println("\n\n\n\n\n\n\n\n\n"+clienteDao.consultarTodos());
+//        System.out.println(""+enderecoDao.consultarClientesUsandoCriteria("SP", "Sao Paulo", null));
         entityManager.getTransaction().commit();
         entityManager.close();
 

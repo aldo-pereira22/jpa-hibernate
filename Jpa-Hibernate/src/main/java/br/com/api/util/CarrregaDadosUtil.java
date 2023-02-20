@@ -72,27 +72,27 @@ public class CarrregaDadosUtil {
 
 
         Endereco augusta = new Endereco("000000000","augusta","casa 43","Sao Paulo","SP");
-        Cliente felipe = new Cliente("12345678901","Felipe Ribeiro");
+        Cliente felipe = new Cliente("12345678901","@gmail","Felipe Ribeiro");
         felipe.addEndereco(augusta);
 
         Endereco rioVermelho = new Endereco("000000001","Rio Vermelho","apto 1001","Salvador","BA");
-        Cliente cleber = new Cliente("111111111111","Cleber Machado");
+        Cliente cleber = new Cliente("111111111111","@gmail","Cleber Machado");
         cleber.addEndereco(rioVermelho);
 
         Endereco leblon = new Endereco("000000002","Leblon","apto 203","Rio de Janeiro","RJ");
-        Cliente calvin = new Cliente("09876543210","Calvin Coelho");
+        Cliente calvin = new Cliente("09876543210","@gmail","Calvin Coelho");
         calvin.addEndereco(leblon);
 
         Endereco heitorPenteado = new Endereco("000000000","Heitor Penteado","apto 101","Sao Paulo","SP");
-        Cliente tayane = new Cliente("111111111123","Tayane Lopes Costa");
+        Cliente tayane = new Cliente("111111111123","@gmail","Tayane Lopes Costa");
         tayane.addEndereco(heitorPenteado);
 
         Endereco consolacao = new Endereco("000000000","Consolacao","apto 1001","Sao Paulo","SP");
-        Cliente denise = new Cliente("111111111145","Denise Costa");
+        Cliente denise = new Cliente("111111111145","@gmail","Denise Costa");
         denise.addEndereco(consolacao);
 
         Endereco nacoesUnidas = new Endereco("000000000","NacoesUnidas","casa 27","Sao Paulo","SP");
-        Cliente claudia = new Cliente("111111111345","Claudia Rosa");
+        Cliente claudia = new Cliente("111111111345","@gmail","Claudia Rosa");
         claudia.addEndereco(nacoesUnidas);
 
         enderecoDao.cadastrar(augusta);

@@ -1,6 +1,7 @@
 package br.com.api.dao;
 
 import br.com.api.entity.Cliente;
+import br.com.api.entity.ClienteId;
 
 import javax.persistence.EntityManager;
 import java.util.List;
@@ -14,7 +15,7 @@ public class ClienteDao {
         this.entityManager.persist(cliente);
     }
 
-    public Cliente consultaPorId(final Integer id){
+    public Cliente consultaPorId(final ClienteId id){
         return this.entityManager.find(Cliente.class, id);
     }
 
