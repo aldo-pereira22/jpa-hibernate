@@ -25,6 +25,10 @@ public class OrdemDao {
         String jpql = "SELECT o FROM Ordem o";
         return this.entityManager.createQuery(jpql, Ordem.class).getResultList();
     }
+    public Ordem joinFetchCliente(final  Integer id){
+        String jpql = "SELECT o FROM Ordem o JOIN FETCH o.cliente WHERE o.id = :id";
+        return this.entityManager.createQuery(jpql, Ordem.class).setParameter("id",id).getSingleResult();
+    }
     public List<ItensPrincipaisVo> consultarItensMaisVendidos(){
         String jpql = "SELECT new br.com.api.vo.ItensPrincipaisVo " +
                 "(c.nome, SUM (oc.quantidade)) FROM Ordem o JOIN OrdensCardapio oc on o.id = oc.cardapio.id " +

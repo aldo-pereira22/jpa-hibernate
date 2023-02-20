@@ -27,7 +27,7 @@ public class Ordem {
 //    )
     private List<OrdensCardapio> ordensCardapioList = new ArrayList<>();
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Cliente cliente;
 
     public Ordem() {

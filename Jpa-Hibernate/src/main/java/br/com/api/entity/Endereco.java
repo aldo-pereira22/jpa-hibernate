@@ -14,7 +14,7 @@ public class Endereco {
     private String cidade;
     private String estado;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Cliente cliente;
 
     public Endereco(String s, String s1, String s2, String goiania, String goias) {

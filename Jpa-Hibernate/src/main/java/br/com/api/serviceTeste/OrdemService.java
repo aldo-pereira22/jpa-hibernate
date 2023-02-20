@@ -24,7 +24,6 @@ public class OrdemService {
         ClienteDao clienteDao = new ClienteDao(entityManager);
         OrdemDao ordemDao= new OrdemDao(entityManager);
 
-
         Endereco endereco = new Endereco("000000","Rua 32", "APTO 1001", "Goiania", "Goias");
         Cliente aldo =  new Cliente("11111","Aldo");
         aldo.addEndereco(endereco);
@@ -35,6 +34,8 @@ public class OrdemService {
         ordemDao.cadastrar(ordem);
         System.out.println(ordem);
 
+        Ordem ordem1 = ordemDao.consultaPorId(1);
+        System.out.println("\n\n\n\nNome da Consulta: "+ ordem1.getCliente().getNome());
         System.out.println(ordemDao.consultarItensMaisVendidos());
         entityManager.getTransaction().commit();
         entityManager.close();
