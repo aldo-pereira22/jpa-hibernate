@@ -2,6 +2,7 @@ package br.com.api.dao;
 
 import br.com.api.entity.Cliente;
 import br.com.api.entity.Ordem;
+import br.com.api.vo.ItensPrincipaisVo;
 
 import javax.persistence.EntityManager;
 import java.util.List;
@@ -24,11 +25,12 @@ public class OrdemDao {
         String jpql = "SELECT o FROM Ordem o";
         return this.entityManager.createQuery(jpql, Ordem.class).getResultList();
     }
-    public List<Object[]> consultarItensMaisVendidos(){
-        String jpql = "SELECT c.nome, SUM (oc.quantidade) FROM Ordem o JOIN OrdensCardapio oc on o.id = oc.cardapio.id " +
+    public List<ItensPrincipaisVo> consultarItensMaisVendidos(){
+        String jpql = "SELECT new br.com.api.vo.ItensPrincipaisVo " +
+                "(c.nome, SUM (oc.quantidade)) FROM Ordem o JOIN OrdensCardapio oc on o.id = oc.cardapio.id " +
                 "JOIN oc.cardapio c " +
                 "GROUP BY c.nome";
-        return this.entityManager.createQuery(jpql, Object[].class).getResultList();
+        return this.entityManager.createQuery(jpql, ItensPrincipaisVo.class).getResultList();
     }
     public void atualizar(final Ordem ordem){
         this.entityManager.merge(ordem);

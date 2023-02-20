@@ -34,9 +34,8 @@ public class OrdemService {
         clienteDao.cadastrar(aldo);
         ordemDao.cadastrar(ordem);
         System.out.println(ordem);
-        ordemDao.consultarItensMaisVendidos().forEach(
-                item-> System.out.println("Item: "+item[0]+"\t-Quantidade: "+ item[1])
-        );
+
+        System.out.println(ordemDao.consultarItensMaisVendidos());
         entityManager.getTransaction().commit();
         entityManager.close();
     }
