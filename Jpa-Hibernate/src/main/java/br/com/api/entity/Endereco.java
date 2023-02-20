@@ -2,7 +2,8 @@ package br.com.api.entity;
 
 import javax.persistence.*;
 
-@Entity(name ="enderecos")
+@Entity
+@Table(name = "enderecos")
 public class Endereco {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +23,6 @@ public class Endereco {
     }
 
     public Endereco(String cep, String rua, String complemento, String cidade, String estado, Cliente cliente) {
-        this.id = id;
         this.cep = cep;
         this.rua = rua;
         this.complemento = complemento;
