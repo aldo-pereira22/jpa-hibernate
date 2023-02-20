@@ -34,8 +34,9 @@ public class OrdemService {
         ordemDao.cadastrar(ordem);
         System.out.println(ordem);
 
-        Ordem ordem1 = ordemDao.consultaPorId(1);
-        System.out.println("\n\n\n\nNome da Consulta: "+ ordem1.getCliente().getNome());
+        System.out.println("\n\n\n\n\nConsulta de cliente"+ clienteDao.consultarPorNome("A"));
+
+
         System.out.println(ordemDao.consultarItensMaisVendidos());
         entityManager.getTransaction().commit();
         entityManager.close();

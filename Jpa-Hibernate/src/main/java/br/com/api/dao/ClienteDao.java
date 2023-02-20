@@ -19,10 +19,15 @@ public class ClienteDao {
     }
 
     public List<Cliente> consultarTodos(){
-        String jpql = "SELECT C FROM Cliente c";
+        String jpql = "SELECT c FROM Cliente c";
         return this.entityManager.createQuery(jpql, Cliente.class).getResultList();
     }
 
+    public List<Cliente> consultarPorNome(final String nome){
+        String jpql = "SELECT c FROM Cliente c WHERE LOWER(c.nome) LIKE LOWER (:nome)";
+        return this.entityManager.createQuery(jpql, Cliente.class)
+                .setParameter("nome","%"+nome+"%").getResultList();
+    }
     public void atualizar(final Cliente cliente){
         this.entityManager.merge(cliente);
     }
